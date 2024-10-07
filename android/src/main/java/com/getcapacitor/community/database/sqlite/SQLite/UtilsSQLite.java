@@ -1,12 +1,11 @@
 package com.getcapacitor.community.database.sqlite.SQLite;
 
-import android.util.Log;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.getcapacitor.JSArray;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.sqlcipher.Cursor;
+import net.zetetic.database.sqlcipher.SQLiteCursor;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +18,7 @@ public class UtilsSQLite {
         String SELECT_CHANGE = "SELECT total_changes()";
         Boolean success = true;
         int ret = Integer.valueOf(-1);
-        Cursor cursor = (Cursor) db.query(SELECT_CHANGE, null);
+        SQLiteCursor cursor = (SQLiteCursor) db.query(SELECT_CHANGE, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 ret = Integer.parseInt(cursor.getString(0));
@@ -33,7 +32,7 @@ public class UtilsSQLite {
         String SELECT_CHANGE = "SELECT last_insert_rowid()";
         Boolean success = true;
         long ret = (long) -1;
-        Cursor cursor = (Cursor) db.query(SELECT_CHANGE, null);
+        SQLiteCursor cursor = (SQLiteCursor) db.query(SELECT_CHANGE, null);
         if (cursor.moveToFirst()) {
             ret = Long.parseLong(cursor.getString(0));
         }
